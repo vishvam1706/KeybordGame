@@ -19,6 +19,7 @@ let roundCount = 1;
 let point = 0;
 let speed = 1;
 let counterSpeed = 10;
+let counterSpeed4 = 0.5;
 let score = 0;
 
 let cheatMy = "``opvish";
@@ -97,6 +98,18 @@ function PushTheKeyValueCheck() {
     }
 }
 
+function CounterTheRoundWord() {
+    let temp = topAnimation - counterSpeed4;
+    if(temp<51){
+        topAnimation = 51;
+    }
+    else{
+        if (topAnimation>=50) {
+            topAnimation -= counterSpeed4;
+        }
+    }
+}
+
 function WinLose() {
     if (topAnimation>=500) {
         StartRetry.innerText = "Retry";
@@ -121,6 +134,7 @@ StartRetry.addEventListener("click",()=>{
         point = 0;
         speed = 1;
         counterSpeed = 10;
+        counterSpeed4 = 0.5;
         Points.innerText = "Points : 0";
         Rounds.innerText = "Round 1";
         StartRetry.innerText = "";
@@ -152,6 +166,7 @@ window.addEventListener("keypress", (e)=>{
             }
         }
         if(e.key.toLowerCase() == Type[0]){
+            CounterTheRoundWord();
             point += 10;
             Points.innerText = "Points : " + point;
 
@@ -177,6 +192,7 @@ window.addEventListener("keypress", (e)=>{
                 round = round + 1;
                 if(round == roundWord){
                     counterSpeed += 2;
+                    counterSpeed4 += 0.25;
                     roundWord = roundWord + 3;
                     roundCount += 1;
                     round = 0;
