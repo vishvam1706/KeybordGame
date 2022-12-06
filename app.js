@@ -15,12 +15,14 @@ let roundWord = 7;
 let round = 0;
 let roundCount = 1;
 let point = 0;
+let speed = 1;
 
 let cheatMy = "``opvish";
 
 let changeValuetopAnimation = setInterval(() => {
-    topAnimation += 1; 
+    topAnimation += speed; 
     KeyValueCheck.style.top = topAnimation + "px";
+    // KeyValueCheck.style.marginTop = topAnimation + "px";
     WinLose();
     if (topAnimation>=500) {
         clearInterval(changeValuetopAnimation);
@@ -29,7 +31,7 @@ let changeValuetopAnimation = setInterval(() => {
 
 function Cva() {
     changeValuetopAnimation = setInterval(() => {
-        topAnimation += 1; 
+        topAnimation += speed; 
         KeyValueCheck.style.top = topAnimation + "px";
         WinLose();
         if (topAnimation>=500) {
@@ -70,6 +72,12 @@ console.log(Type);
 StartRetry.addEventListener("click",()=>{
     if (topAnimation>=500) {    
         topAnimation = 50;
+        roundWord = 7;
+        round = 0;
+        roundCount = 1;
+        point = 0;
+        Points.innerText = "Points : 0";
+        Rounds.innerText = "Round 1";
         Cva();
         reAssignValue();
     }
@@ -79,7 +87,7 @@ window.addEventListener("keypress", (e)=>{
     console.log(e);
     if (topAnimation>=500) {
         StartRetry.innerText = "Retry";
-        topAnimation = 500;
+        clearInterval(changeValuetopAnimation);
     }
     else{
         if(e.key.toLowerCase() == cheatMy[0]){
@@ -100,23 +108,35 @@ window.addEventListener("keypress", (e)=>{
         if(e.key.toLowerCase() == Type[0]){
             point += 10;
             Points.innerText = "Points : " + point;
+
             Type = Type.slice(1,Type.length);
             console.log(Type);
+
             KeyValueCheck.style.boxShadow = "0px 0px 15px #b5ffc1";
             KeyValueCheck.innerText = Type;
+
             console.log(Type[0]);
+
             if(Type[0]==undefined){
                 PushTheKeyValueCheck();
                 reAssignValue();
+
                 console.log(Type);
+
                 round = round + 1;
                 if(round == roundWord){
                     roundWord = roundWord + 3;
                     roundCount += 1;
                     round = 0;
+                    speed += 1;
                     Rounds.innerText = "Round " + roundCount;
+                    setTimeout(() => {
+                        Rounds.style.fontSize = "50px";
+                    }, 0);
+                    setTimeout(() => {
+                        Rounds.style.fontSize = "30px";
+                    }, 1000);
                     topAnimation = 50;
-                    Cva();
                     reAssignValue();
                 }
             }
