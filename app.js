@@ -5,6 +5,7 @@ let main = document.getElementById("main");
 let StartRetry = document.getElementById("StartRetry");
 let Rounds = document.getElementById("Rounds");
 let Points = document.getElementById("Points");
+let HighScore = document.getElementById("HighScore");
 
 let random = parseInt(Math.random()*9955);
 let topAnimation = 50;
@@ -16,13 +17,31 @@ let round = 0;
 let roundCount = 1;
 let point = 0;
 let speed = 1;
+let counterSpeed = 10;
+let score = 0;
 
 let cheatMy = "``opvish";
 
 let changeValuetopAnimation = setInterval(() => {
+    if (topAnimation==50) {
+        setTimeout(() => {
+            StartRetry.innerText = "3";
+        }, 0);
+        setTimeout(() => {
+            StartRetry.innerText = "2";
+        }, 600);
+        setTimeout(() => {
+            StartRetry.innerText = "1";
+        }, 1000);
+        setTimeout(() => {
+            StartRetry.innerText = "Go";
+        }, 1500);
+        setTimeout(() => {
+            StartRetry.innerText = "";
+        }, 2000);
+    }
     topAnimation += speed; 
     KeyValueCheck.style.top = topAnimation + "px";
-    // KeyValueCheck.style.marginTop = topAnimation + "px";
     WinLose();
     if (topAnimation>=500) {
         clearInterval(changeValuetopAnimation);
@@ -31,6 +50,23 @@ let changeValuetopAnimation = setInterval(() => {
 
 function Cva() {
     changeValuetopAnimation = setInterval(() => {
+        if (topAnimation==50) {
+            setTimeout(() => {
+                StartRetry.innerText = "3";
+            }, 0);
+            setTimeout(() => {
+                StartRetry.innerText = "2";
+            }, 600);
+            setTimeout(() => {
+                StartRetry.innerText = "1";
+            }, 1000);
+            setTimeout(() => {
+                StartRetry.innerText = "Go";
+            }, 1500);
+            setTimeout(() => {
+                StartRetry.innerText = "";
+            }, 2000);
+        }
         topAnimation += speed; 
         KeyValueCheck.style.top = topAnimation + "px";
         WinLose();
@@ -50,7 +86,7 @@ function reAssignValue(){
 
 function PushTheKeyValueCheck() {
     if (topAnimation>=50) {
-        topAnimation -= 10;
+        topAnimation -= counterSpeed;
     }
 }
 
@@ -61,7 +97,7 @@ function WinLose() {
         clearInterval(changeValuetopAnimation);
     }
     else{
-        StartRetry.style.display = "none";
+        // StartRetry.style.display = "none";
     }
 }
 
@@ -76,8 +112,11 @@ StartRetry.addEventListener("click",()=>{
         round = 0;
         roundCount = 1;
         point = 0;
+        speed = 1;
+        counterSpeed = 10;
         Points.innerText = "Points : 0";
         Rounds.innerText = "Round 1";
+        StartRetry.innerText = "";
         Cva();
         reAssignValue();
     }
@@ -109,6 +148,11 @@ window.addEventListener("keypress", (e)=>{
             point += 10;
             Points.innerText = "Points : " + point;
 
+            if(point>=score){
+                score = point;
+                HighScore.innerText = `High Score : ${score}`;
+            }
+            
             Type = Type.slice(1,Type.length);
             console.log(Type);
 
@@ -125,6 +169,7 @@ window.addEventListener("keypress", (e)=>{
 
                 round = round + 1;
                 if(round == roundWord){
+                    counterSpeed += 2;
                     roundWord = roundWord + 3;
                     roundCount += 1;
                     round = 0;
