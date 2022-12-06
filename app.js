@@ -7,7 +7,7 @@ let Rounds = document.getElementById("Rounds");
 let Points = document.getElementById("Points");
 let HighScore = document.getElementById("HighScore");
 
-let random = parseInt(Math.random()*9940);
+let random = parseInt(Math.random()*9937);
 let topAnimation = 50;
 let Type = WordDict[random];
 
@@ -80,7 +80,7 @@ function Cva() {
 console.log(random);
 
 function reAssignValue(){
-    random = parseInt(Math.random()*9940);
+    random = parseInt(Math.random()*9937);
     Type = WordDict[random];
     KeyValueCheck.innerText = Type;
 }
