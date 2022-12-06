@@ -137,7 +137,7 @@ window.addEventListener("keypress", (e)=>{
             if(cheatMy[0] == undefined){
                 cheatMy = "``opvish";
                 console.log("Hello " + cheatMy);
-                topAnimation = 50;
+                topAnimation = 51;
                 console.log(cheatMy);
             }
             else{
