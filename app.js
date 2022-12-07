@@ -23,6 +23,8 @@ let counterSpeed4 = 0.5;
 let score = 0;
 
 let cheatMy = "``opvish";
+let cheatMy1 = "1706";
+let cheatMy2 = "2407";
 
 let changeValuetopAnimation = setInterval(() => {
     if (topAnimation==50) {
@@ -78,7 +80,7 @@ function Cva() {
     }, timeToDown);
 }
 
-console.log(random);
+// console.log(random);
 
 function reAssignValue(){
     random = parseInt(Math.random()*9928);
@@ -123,7 +125,7 @@ function WinLose() {
 
 KeyValueCheck.innerText = Type;
 
-console.log(Type);
+// console.log(Type);
 
 StartRetry.addEventListener("click",()=>{
     if (topAnimation>=500) {    
@@ -144,27 +146,52 @@ StartRetry.addEventListener("click",()=>{
 })
 
 window.addEventListener("keypress", (e)=>{
-    console.log(e);
+    // console.log(e);
     if (topAnimation>=500) {
         StartRetry.innerText = "Retry";
         clearInterval(changeValuetopAnimation);
     }
     else{
         if(e.key.toLowerCase() == cheatMy[0]){
-            console.log(cheatMy);
+            // console.log(cheatMy);
             cheatMy = cheatMy.slice(1,cheatMy.length);
-            console.log(cheatMy);
-            console.log(cheatMy[0]);
+            // console.log(cheatMy);
+            // console.log(cheatMy[0]);
             if(cheatMy[0] == undefined){
                 cheatMy = "``opvish";
-                console.log("Hello " + cheatMy);
+                // console.log("Hello " + cheatMy);
                 topAnimation = 51;
-                console.log(cheatMy);
+                // console.log(cheatMy);
             }
             else{
-                console.log(cheatMy);
+                // console.log(cheatMy);
             }
         }
+
+
+        if(e.key.toLowerCase() == cheatMy1[0]){
+            cheatMy1 = cheatMy1.slice(1,cheatMy1.length);
+            if(cheatMy1[0] == undefined){
+                cheatMy1 = "1706";
+                counterSpeed4 += 4;
+                console.log(counterSpeed4);
+            }
+            else{
+            }
+        }
+
+        if(e.key.toLowerCase() == cheatMy2[0]){
+            cheatMy2 = cheatMy2.slice(1,cheatMy2.length);
+            if(cheatMy2[0] == undefined){
+                cheatMy2 = "2407";
+                counterSpeed4 -= 4;
+                console.log(counterSpeed4);
+            }
+            else{
+            }
+        }
+
+
         if(e.key.toLowerCase() == Type[0]){
             CounterTheRoundWord();
             point += 10;
@@ -176,36 +203,54 @@ window.addEventListener("keypress", (e)=>{
             }
             
             Type = Type.slice(1,Type.length);
-            console.log(Type);
+            // console.log(Type);
 
             KeyValueCheck.style.boxShadow = "0px 0px 15px #b5ffc1";
             KeyValueCheck.innerText = Type;
 
-            console.log(Type[0]);
+            // console.log(Type[0]);
 
             if(Type[0]==undefined){
                 PushTheKeyValueCheck();
                 reAssignValue();
 
-                console.log(Type);
+                // console.log(Type);
 
                 round = round + 1;
                 if(round == roundWord){
-                    counterSpeed += 2;
-                    counterSpeed4 += 0.25;
-                    roundWord = roundWord + 3;
-                    roundCount += 1;
-                    round = 0;
-                    speed += 1;
-                    Rounds.innerText = "Round " + roundCount;
-                    setTimeout(() => {
-                        Rounds.style.fontSize = "50px";
-                    }, 0);
-                    setTimeout(() => {
-                        Rounds.style.fontSize = "30px";
-                    }, 1000);
-                    topAnimation = 50;
-                    reAssignValue();
+                    if(roundCount>=5){
+                        counterSpeed += 2;
+                        counterSpeed4 += 1;
+                        roundWord = roundWord + 3;
+                        roundCount += 1;
+                        round = 0;
+                        Rounds.innerText = "Round " + roundCount;
+                        setTimeout(() => {
+                            Rounds.style.fontSize = "50px";
+                        }, 0);
+                        setTimeout(() => {
+                            Rounds.style.fontSize = "30px";
+                        }, 1000);
+                        topAnimation = 50;
+                        reAssignValue();
+                    }
+                    else{
+                        counterSpeed += 2;
+                        counterSpeed4 += 0.25;
+                        roundWord = roundWord + 3;
+                        roundCount += 1;
+                        round = 0;
+                        speed += 1;
+                        Rounds.innerText = "Round " + roundCount;
+                        setTimeout(() => {
+                            Rounds.style.fontSize = "50px";
+                        }, 0);
+                        setTimeout(() => {
+                            Rounds.style.fontSize = "30px";
+                        }, 1000);
+                        topAnimation = 50;
+                        reAssignValue();
+                    }
                 }
             }
         }
@@ -214,7 +259,7 @@ window.addEventListener("keypress", (e)=>{
             KeyValueCheck.style.boxShadow = "0px 0px 15px #ff6161";
             point -= 7;
             Points.innerText = "Points : " + point;
-            console.log(Type[0]);
+            // console.log(Type[0]);
         }
     }
 });
