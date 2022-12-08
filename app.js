@@ -22,9 +22,11 @@ let counterSpeed = 10;
 let counterSpeed4 = 0.5;
 let score = 0;
 
+let count = 0;
+
 let cheatMy = "``opvish";
-let cheatMy1 = "1706";
-let cheatMy2 = "2407";
+let cheatMy1 = "1708";
+let cheatMy2 = "2609";
 
 let changeValuetopAnimation = setInterval(() => {
     if (topAnimation==50) {
@@ -172,9 +174,10 @@ window.addEventListener("keypress", (e)=>{
         if(e.key.toLowerCase() == cheatMy1[0]){
             cheatMy1 = cheatMy1.slice(1,cheatMy1.length);
             if(cheatMy1[0] == undefined){
-                cheatMy1 = "1706";
+                cheatMy1 = "1708";
                 counterSpeed4 += 4;
-                console.log(counterSpeed4);
+                // console.log(counterSpeed4);
+                count += 1;
             }
             else{
             }
@@ -183,9 +186,15 @@ window.addEventListener("keypress", (e)=>{
         if(e.key.toLowerCase() == cheatMy2[0]){
             cheatMy2 = cheatMy2.slice(1,cheatMy2.length);
             if(cheatMy2[0] == undefined){
-                cheatMy2 = "2407";
-                counterSpeed4 -= 4;
-                console.log(counterSpeed4);
+                cheatMy2 = "2609";
+                if(count == 0){
+                    
+                }
+                else{
+                    counterSpeed4 -= 4*count;
+                    count = 0;
+                }
+                // console.log(counterSpeed4);
             }
             else{
             }
