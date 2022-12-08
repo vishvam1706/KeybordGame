@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bad+Script&family=Bebas+Neue&family=Cabin+Sketch:wght@700&family=Domine:wght@500&family=Dosis&family=DynaPuff&family=Euphoria+Script&family=Great+Vibes&family=Hi+Melody&family=Lobster+Two:ital,wght@1,700&family=Londrina+Solid:wght@100&family=Major+Mono+Display&family=Nunito&family=Oleo+Script+Swash+Caps&family=Playfair+Display+SC&family=Quicksand&family=Raleway&family=Raleway+Dots&family=Rancho&family=Roboto+Slab:wght@300&family=Sue+Ellen+Francisco&family=Tiro+Bangla&family=VT323&display=swap');
 *{
     margin: 0%;
     padding: 0%;
+    font-family: 'VT323', monospace;
 }
 .main{
-    background-image: linear-gradient(#000000,#154920,#491515,#000000);
+    /* background-image: linear-gradient(#000000,#154920,#491515,#000000); */
+    background-image: linear-gradient(#000000,#1f1549,#491542,#000000);
     /* background-image: linear-gradient(#000000,#3ec95c,#154920,,#ffb1b1,#491515,#b43838,#000000); */
 }
 .GameSize{
@@ -14,15 +17,15 @@
     flex-direction: column;
 }
 .KeyValueCheck{
-    font-size: 25px;
+    font-size: 26px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
     width: fit-content;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: absolute;
     font-weight: 600;
+    text-transform: uppercase;
     top: 50px;
     left: 50%;
     width:30em;
@@ -32,7 +35,6 @@
 }
 #Points{
     font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     font-weight: 600;
     position: absolute;
@@ -43,7 +45,6 @@
 }
 #Rounds{
     font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     font-weight: 600;
     position: absolute;
@@ -62,7 +63,6 @@
 #StartRetry{
     cursor: pointer;
     font-size: 70px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     font-weight: 600;
     /* display: none; */
@@ -80,7 +80,6 @@
 }
 #HighScore{
     font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     font-weight: 600;
     position: absolute;
