@@ -218,23 +218,6 @@ window.addEventListener("keypress", (e)=>{
 
                 round = round + 1;
                 if(round == roundWord){
-                    if(roundCount>=5){
-                        counterSpeed += 2;
-                        counterSpeed4 += 1;
-                        roundWord = roundWord + 3;
-                        roundCount += 1;
-                        round = 0;
-                        Rounds.innerText = "Round " + roundCount;
-                        setTimeout(() => {
-                            Rounds.style.fontSize = "50px";
-                        }, 0);
-                        setTimeout(() => {
-                            Rounds.style.fontSize = "30px";
-                        }, 1000);
-                        topAnimation = 50;
-                        reAssignValue();
-                    }
-                    else{
                         counterSpeed += 2;
                         counterSpeed4 += 0.25;
                         roundWord = roundWord + 3;
@@ -250,7 +233,6 @@ window.addEventListener("keypress", (e)=>{
                         }, 1000);
                         topAnimation = 50;
                         reAssignValue();
-                    }
                 }
             }
         }
