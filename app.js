@@ -6,11 +6,11 @@ let StartRetry = document.getElementById("StartRetry");
 let Rounds = document.getElementById("Rounds");
 let Points = document.getElementById("Points");
 let HighScore = document.getElementById("HighScore");
+let avghtml = document.getElementById("AVG");
 
 let random = parseInt(Math.random()*9920);
 let topAnimation = 50;
 let Type = WordDict[random];
-
 
 let timeToDown = 250;
 let roundWord = 7;
@@ -18,6 +18,8 @@ let round = 0;
 let roundCount = 1;
 let point = 0;
 let speed = 1;
+let wpoint = 0;
+let tpoint = 0;
 let counterSpeed = 10;
 let counterSpeed4 = 0.5;
 let score = 0;
@@ -116,8 +118,12 @@ function CounterTheRoundWord() {
 
 function WinLose() {
     if (topAnimation>=500) {
+        let avg = tpoint - wpoint;
+        let anspro = avg * 100 / tpoint;
         StartRetry.innerText = "Retry";
+        avghtml.innerText = `Avarge Score : ${anspro.toFixed(2)}%`;
         StartRetry.style.display = "block";
+        avghtml.style.display = "block";
         clearInterval(changeValuetopAnimation);
     }
     else{
@@ -137,11 +143,14 @@ StartRetry.addEventListener("click",()=>{
         roundCount = 1;
         point = 0;
         speed = 1;
+        wpoint = 0;
+        tpoint = 0;
         counterSpeed = 10;
         counterSpeed4 = 0.5;
         Points.innerText = "Points : 0";
         Rounds.innerText = "Round 1";
         StartRetry.innerText = "";
+        avghtml.innerText = "";
         Cva();
         reAssignValue();
     }
@@ -203,8 +212,9 @@ window.addEventListener("keypress", (e)=>{
 
         if(e.key.toLowerCase() == Type[0]){
             CounterTheRoundWord();
-            point += 10;
-            Points.innerText = "Points : " + point;
+            tpoint += 1;
+            console.log(tpoint);
+            // Points.innerText = "Points : " + point;
 
             if(point>=score){
                 score = point;
@@ -220,6 +230,12 @@ window.addEventListener("keypress", (e)=>{
             // console.log(Type[0]);
 
             if(Type[0]==undefined){
+                point += 50;
+                Points.innerText = "Points : " + point;
+                if(point>=score){
+                    score = point;
+                    HighScore.innerText = `High Score : ${score}`;
+                }
                 PushTheKeyValueCheck();
                 reAssignValue();
 
@@ -248,9 +264,8 @@ window.addEventListener("keypress", (e)=>{
         
         else{
             KeyValueCheck.style.boxShadow = "0px 0px 15px #ff6161";
-            point -= 7;
-            Points.innerText = "Points : " + point;
-            // console.log(Type[0]);
+            wpoint += 1;
+            console.log(wpoint);
         }
     }
 });
