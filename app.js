@@ -125,7 +125,7 @@ function WinLose() {
         let avg = tpoint - wpoint;
         let anspro = avg * 100 / tpoint;
         StartRetry.innerText = "Retry";
-        avghtml.innerText = `Average Score : ${anspro.toFixed(2)}%`;
+        avghtml.innerText = `Accuracy : ${anspro.toFixed(2)}%`;
         StartRetry.style.display = "block";
         avghtml.style.display = "block";
         clearInterval(changeValuetopAnimation);
